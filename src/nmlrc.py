@@ -1,21 +1,48 @@
 from urllib import request
-import re
-import json
+import re, json
 
-lrc_re = re.compile(r'\[(.*?)\]+(.*)')
+class LyricProcessor(object):
+    def __init__(self):
+        self.__lrc_re = re.compile(r'\[(.*)\](.*)')
 
-def getNeteaseLyric(song_id):
-    lrc_url = 'http://music.163.com/api/song/lyric?id={}&lv=1&tv=-1'
-    req = request.Request(lrc_url.format(song_id))
-    res = request.urlopen(req).read().decode('utf-8')
-    data = json.loads(res)
-    lrc = data['lrc']['lyric']
-    tlrc = data['tlyric']['lyric']
-    return lrc, tlrc
+    def getNeteaseLyric(self, song_id):
+        lrc_url = 'http://music.163.com/api/song/lyric?id={}&lv=1&tv=-1'
+        # get lyric data from Netease Music
+        req = request.Request(lrc_url.format(song_id))
+        res = request.urlopen(req).read().decode('utf-8')
+        data = json.loads(res)
+        # parse JSON
+        lrc = data['lrc']['lyric']
+        tlrc = data['tlyric']['lyric']
+        return lrc, tlrc
 
-def getLyricList(lrc, trans_lrc=''):
-    lrc_data = lrc_re.findall(lrc)
-    tlrc_data = lrc_re.findall(trans_lrc)
-    return lrc_data
+    def getLyricList(self, lrc):
+        lrc_data = self.__lrc_re.findall(lrc)
+        lrc_list = []
+        for i in lrc_data:
+            # convert time code from text to integer in order to sort
+            time_code = i[0].replace(':', '').replace('.', '').split('][')
+            if i[1] != '':
+                for j in time_code:
+                    lrc_list.append((int(j), i[1]))
+        return sorted(lrc_list, key=lambda x: x[0])
 
-print(getLyricList('[1][2]a'))
+    def mergeLyricList(self, lrc_list, tlrc_list):
+        pos = 0
+        merged = []
+        for i in lrc_list:
+            trans_str = ''
+            if i[0] == tlrc_list[pos][0]:
+                # if time code is same
+                trans_str = tlrc_list[pos][1]
+                pos += 1
+            else:
+                trans_str = ''
+            merged.append((i[0], i[1], trans_str))
+        return merged
+
+    def getTimeCodeText(self, time_code):
+        text = str(time_code // 10000).zfill(2) + ':'
+        text += str(time_code // 100 % 100).zfill(2) + '.'
+        text += str(time_code % 100).zfill(2)
+        return text
