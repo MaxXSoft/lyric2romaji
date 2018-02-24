@@ -27,18 +27,13 @@ class LyricProcessor(object):
                     lrc_list.append((int(j), i[1]))
         return sorted(lrc_list, key=lambda x: x[0])
 
-    def mergeLyricList(self, lrc_list, tlrc_list):
+    def mergeLyricList(self, *lrc_lists):
         pos = 0
-        merged = []
-        for i in lrc_list:
-            trans_str = ''
-            if i[0] == tlrc_list[pos][0]:
-                # if time code is same
-                trans_str = tlrc_list[pos][1]
-                pos += 1
-            else:
-                trans_str = ''
-            merged.append((i[0], i[1], trans_str))
+        merged = {}
+        for l in lrc_lists:
+            for i in l:
+                item = merged.setdefault(i[0], [])
+                item.append(i[1])
         return merged
 
     def getTimeCodeText(self, time_code):
