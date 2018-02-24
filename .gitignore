@@ -33,6 +33,6 @@ Temporary Items
 # VS Code
 .vscode
 
-# Build & Debug
-build
-debug
+# Project
+__pycache__
+src/cache
