@@ -5,7 +5,7 @@ class LyricProcessor(object):
     def __init__(self):
         self.__lrc_re = re.compile(r'\[(.*)\](.*)')
 
-    def getNeteaseLyric(self, song_id):
+    def getNetEaseLyric(self, song_id):
         lrc_url = 'http://music.163.com/api/song/lyric?id={}&lv=1&tv=-1'
         # get lyric data from Netease Music
         req = request.Request(lrc_url.format(song_id))
