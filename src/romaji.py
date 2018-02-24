@@ -22,9 +22,11 @@ class RomajiConverter(object):
         if self.__token == '': self.getToken()
         # get data from server
         req = request.Request('https://j-talk.com/convert')
-        post_data = parse.urlencode({'_token': self.__token,
-                                     'content': content,
-                                     'convertOption': self.__conv_option})
+        post_data = parse.urlencode({
+            '_token': self.__token,
+            'content': content,
+            'convertOption': self.__conv_option
+        })
         res = request.urlopen(req, data=post_data.encode('utf-8'))
         res = res.read().decode('utf-8')
         # start matching
