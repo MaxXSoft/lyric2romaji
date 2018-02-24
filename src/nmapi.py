@@ -44,10 +44,9 @@ def getMp3Info(song_id, quality='l'):
     req.add_header('User-Agent', '')
     res = request.urlopen(req).read().decode('utf-8')
     data = json.loads(res)
-    # get song url info by quality
+    # get mp3 info by quality
     quality_id = quality + 'Music'
-    mp3_info = data['songs'][0][quality_id]
-    return mp3_info
+    return data['songs'][0][quality_id]
 
 def getSongUrl(song_id, quality='l'):
     mp3_info = getMp3Info(song_id, quality)
@@ -64,3 +63,11 @@ def getSongUrl(song_id, quality='l'):
     # parse the data
     url_data = json.loads(res.read().decode('utf-8'))
     return url_data['data'][0]['url']
+
+def searchSongName(name, limit=5):
+    post_url = 'http://music.163.com/api/search/get'
+    post_data = parse.urlencode({'s': name, 'type': 1, 'limit': limit})
+    req = request.Request(post_url)
+    res = request.urlopen(req, data=post_data.encode('utf-8'))
+    data = json.loads(res.read().decode('utf-8'))
+    return data['result']['songs']
