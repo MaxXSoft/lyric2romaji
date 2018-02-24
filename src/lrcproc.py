@@ -28,7 +28,6 @@ class LyricProcessor(object):
         return sorted(lrc_list, key=lambda x: x[0])
 
     def mergeLyricList(self, *lrc_lists):
-        pos = 0
         merged = {}
         for l in lrc_lists:
             for i in l:

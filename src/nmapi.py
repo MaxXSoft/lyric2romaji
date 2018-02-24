@@ -3,7 +3,7 @@
 from urllib import request, parse
 import json
 import random, os, base64, binascii
-from Crypto.Cipher import AES   # pycrypto required
+from Crypto.Cipher import AES   # PyCrypto required
 
 def encryptAES(text, sec_key):
     pad = 16 - len(text) % 16
@@ -65,9 +65,8 @@ def getSongUrl(song_id, quality='l'):
     return url_data['data'][0]['url']
 
 def searchSongName(name, limit=5):
-    post_url = 'http://music.163.com/api/search/get'
     post_data = parse.urlencode({'s': name, 'type': 1, 'limit': limit})
-    req = request.Request(post_url)
+    req = request.Request('http://music.163.com/api/search/get')
     res = request.urlopen(req, data=post_data.encode('utf-8'))
     data = json.loads(res.read().decode('utf-8'))
     return data['result']['songs']
