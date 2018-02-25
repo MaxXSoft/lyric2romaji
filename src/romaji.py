@@ -51,5 +51,5 @@ class RomajiConverter(object):
         # data processing
         result = []
         for i in range(len(romaji)):
-            result.append((romaji[i].replace(r'<br>', ', '), src[i]))
+            result.append((romaji[i].replace('<br>', ','), src[i]))
         return result

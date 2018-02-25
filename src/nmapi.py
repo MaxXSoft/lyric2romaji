@@ -37,16 +37,19 @@ def getEncryptedRequest(text):
     data = {'params': enc_text, 'encSecKey': enc_sec_key}
     return parse.urlencode(data)
 
-def getMp3Info(song_id, quality='l'):
-    # get song detail
+def getSongDetail(song_id):
     detail_url = 'http://music.163.com/api/song/detail/?id={}&ids=[{}]'
     req = request.Request(detail_url.format(song_id, song_id))
     req.add_header('User-Agent', '')
     res = request.urlopen(req).read().decode('utf-8')
     data = json.loads(res)
+    return data['songs'][0]
+
+def getMp3Info(song_id, quality='l'):
+    data = getSongDetail(song_id)
     # get mp3 info by quality
     quality_id = quality + 'Music'
-    return data['songs'][0][quality_id]
+    return data[quality_id]
 
 def getSongUrl(song_id, quality='l'):
     mp3_info = getMp3Info(song_id, quality)
