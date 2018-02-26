@@ -1,9 +1,17 @@
-var applyInfo = function() {
+var applyInfo = function(player) {
     loadJSON('info.json', function(json) {
+        console.log(json);
         albumPicUrl = "url('" + json.album.pic + "')"
-        document.getElementById('top-banner').style.backgroundImage = albumPicUrl
-        document.getElementById('album').style.backgroundImage = albumPicUrl
+        player.setAlbumCover(albumPicUrl)
+        player.setSongInfo(json.name, json.artists, json.album.name)
     })
 }
 
-applyInfo()
+var __main = function() {
+    p = Player()
+    applyInfo(p)
+}
+
+window.onload = function() {
+    __main()
+}
