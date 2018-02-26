@@ -88,10 +88,10 @@ class CacheManager(object):
         # already cached
         if cache_item != None:
             save_path = self.__cache_dir + cache_item
-            return save_path, save_path + '.info'
+            return save_path + '.song', save_path + '.info'
         cache_item = self.__getCachtUID(song_id)
         save_path = self.__cache_dir + cache_item
-        if not path.exists(save_path):
+        if not path.exists(save_path + '.song'):
             # save info cache
             if show_progress:
                 print('caching song info...')
@@ -103,8 +103,8 @@ class CacheManager(object):
                 call_back = self.__showProgress
                 print('caching song...')
             url = nmapi.getSongUrl(song_id)
-            urlretrieve(url, save_path, call_back)
-        return save_path, save_path + '.info'
+            urlretrieve(url, save_path + '.song', call_back)
+        return save_path + '.song', save_path + '.info'
 
     def getCacheDirSize(self):
         size = 0
