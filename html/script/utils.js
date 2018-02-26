@@ -1,3 +1,7 @@
+var $ = function(id) {
+    return document.getElementById(id)
+}
+
 var loadJSON = function(url, success) {
     var xhr = new XMLHttpRequest()
     xhr.onreadystatechange = function() {
