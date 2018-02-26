@@ -1,0 +1,97 @@
+#player {
+    display: inline-block;
+    width: 50%;
+    min-width: 480px;
+    max-width: 700px;
+    height: auto;
+    text-align: center;
+    margin-bottom: 35px;
+    margin-top: 20px;
+    background: white;
+    border-radius: 1.5em;
+    box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.1);
+}
+
+#player:hover {
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+#album {
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin: 45px 25px 45px 35px;
+    background: burlywood;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0.5em;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+#album:hover {
+    box-shadow: 0px 5px 17px rgba(0, 0, 0, 0.25);
+    transform: scale(1.02)
+}
+
+#album:active {
+    box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.15);
+    transform: scale(0.99)
+}
+
+#play-button {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+}
+
+#play-button:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#play-button:active {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#volume {
+    float: right;
+    width: 35px;
+    height: 35px;
+    margin: 55px 30px 25px 25px;
+    background: url('../pic/volume.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#info-area {
+    float: left;
+    position: absolute;
+    left: 0px;
+    right: 95px;
+    margin: 50px 0 0 0;
+}
+
+#song-name, #song-info {
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: "Source Han Sans", "PingFang SC", "Segoe UI",
+                 SegoeUI, "Microsoft YaHei", 微软雅黑,
+                 "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#song-name {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: black;
+}
+
+#song-info {
+    font-size: 0.9em;
+    font-weight: normal;
+    color: rgb(140, 140, 140);
+}

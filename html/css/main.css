@@ -19,58 +19,6 @@ a {
     color: inherit;
 }
 
-#player {
-    display: inline-block;
-    width: 50%;
-    min-width: 450px;
-    max-width: 700px;
-    height: auto;
-    text-align: center;
-    margin-bottom: 35px;
-    margin-top: 20px;
-    background: white;
-    border-radius: 1.5em;
-    box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.1);
-}
-
-#player:hover {
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
-}
-
-#album {
-    width: 100px;
-    height: 100px;
-    margin: 35px 35px 35px 25px;
-    /* background-image: url("http://p1.music.126.net/O1zMQTo7Xttfv8QflHFyXw==/2289183209054989.jpg"); */
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 0.5em;
-    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-}
-
-#album:hover {
-    box-shadow: 0px 5px 17px rgba(0, 0, 0, 0.25);
-    transform: scale(1.02)
-}
-
-#album:active {
-    box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.15);
-    transform: scale(0.99)
-}
-
-#play-button {
-    width: 100%;
-    height: 100%;
-}
-
-#play-button:hover {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#play-button:active {
-    background: rgba(0, 0, 0, 0.4);
-}
-
 #player-container {
     position: absolute;
     top: 50px;
@@ -82,7 +30,7 @@ a {
 #top-banner {
     width: 100%;
     height: 200px;
-    /* background-image: url("http://p1.music.126.net/O1zMQTo7Xttfv8QflHFyXw==/2289183209054989.jpg"); */
+    background: cadetblue;
     background-repeat: no-repeat;
     background-size: cover;
     filter: blur(15px);
