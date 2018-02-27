@@ -42,7 +42,6 @@ class RequestHandler(BaseHTTPRequestHandler):
             try:
                 with open(path.realpath(file_path), 'rb') as f:
                     content = f.read()
-                    print(file_path, len(content))
                     self.send_response_only(200)
                     self.send_header('Content-type', mime_type)
                     # NOTE: important!
