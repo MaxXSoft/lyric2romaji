@@ -42,8 +42,12 @@ class RequestHandler(BaseHTTPRequestHandler):
             try:
                 with open(path.realpath(file_path), 'rb') as f:
                     content = f.read()
+                    print(file_path, len(content))
                     self.send_response_only(200)
                     self.send_header('Content-type', mime_type)
+                    # NOTE: important!
+                    self.send_header('Content-Length', len(content))
+                    self.send_header('Accept-Ranges', 'bytes')
                     self.end_headers()
                     self.wfile.write(content)
             except IOError:
