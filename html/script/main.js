@@ -9,6 +9,7 @@ var applyInfo = function(player) {
 
 var __main = function() {
     p = Player()
+    p.startUpdateLoop()
     applyInfo(p)
 }
 
