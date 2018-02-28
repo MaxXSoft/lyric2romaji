@@ -22,11 +22,17 @@
             </div>
             <div align="left">
                 <div>
-                    <div id="info-area">
-                        <span id="song-name">Song Name</span>
+                    <div id="info-area" class="unselectable">
+                        <span id="song-name">Song Name Name</span>
                         <span id="song-info">Artist - Album</span>
                     </div>
-                    <div id="volume"></div>
+                    <div id="volume-button"></div>
+                    <div id="volume-container">
+                        <div id="volume-bar">
+                            <div id="volume"></div>
+                        </div>
+                        <div id="volume-handle"></div>
+                    </div>
                 </div>
                 <div id="progress-container">
                     <div id="progress-bar">
@@ -35,7 +41,7 @@
                     <div id="handle"></div>
                 </div>
                 <div style="padding: 0 35px;" align="right">
-                    <span id="time-code">0:00/0:00</span>
+                    <span id="time-code" class="unselectable">0:00/0:00</span>
                 </div>
             </div>
         </div>
