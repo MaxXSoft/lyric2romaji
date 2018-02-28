@@ -50,12 +50,15 @@
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-#volume {
+#volume-button {
     float: right;
     width: 35px;
     height: 35px;
     margin: 50px 30px 20px 25px;
-    background: url('../pic/volume.svg');
+    background: url('../pic/volume0.svg'),
+                url('../pic/volume1.svg'),
+                url('../pic/volume2.svg'),
+                url('../pic/volume3.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 130%;
@@ -68,6 +71,7 @@
     right: 95px;
     margin: 45px 0 0 0;
     padding: 0 0 0 10px;
+    z-index: 1;
 }
 
 #song-name, #song-info {
@@ -98,24 +102,26 @@
     padding: 0 35px 0 11px;
 }
 
-#progress-bar {
+#progress-bar, #volume-bar {
     width: 100%;
     height: 4px;
-    margin: 9px 0 0 0;
     background: rgb(235, 235, 235);
     border-radius: 4px;
 }
 
-#progress {
+#progress-bar {
+    margin: 9px 0 0 0;
+}
+
+#progress, #volume {
     width: 0;
     height: 100%;
     background: rgb(60, 60, 60);
 }
 
-#handle {
+#handle, #volume-handle {
     position: absolute;
     display: inline-block;
-    top: 0;
     left: 0px;
     width: 14px;
     height: 14px;
@@ -126,7 +132,34 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
+#handle {
+    top: 0;
+}
+
 #time-code {
     font-size: 0.7em;
     color: rgb(75, 75, 75);
+}
+
+#volume-container {
+    position: absolute;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    top: 48px;
+    right: 70px;
+    width: 120px;
+    height: 40px;
+    background: white;
+    z-index: 2;
+    box-shadow: -5px 5px 5px rgba(255, 255, 255, 1);
+    opacity: 0;
+}
+
+#volume-bar {
+    margin: 0 12px 0 10px
+}
+
+#volume-handle {
+    top: 9px;
 }
