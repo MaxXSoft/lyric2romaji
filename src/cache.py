@@ -108,16 +108,19 @@ class CacheManager(object):
 
     def getCacheDirSize(self):
         size = 0
+        file_num = 0
         for f in listdir(self.__cache_dir):
             cur_file = path.join(self.__cache_dir, f)
             if path.isfile(cur_file):
+                if cur_file.endswith('.song'):
+                    file_num += 1
                 size += path.getsize(cur_file)
         size_str = ''
         if size >= 1024 ** 3 * 0.9:
             size_str = '%.2f GB' % (size / 1024 ** 3)
         else:
             size_str = '%.2f MB' % (size / 1024 ** 2)
-        return size, size_str
+        return file_num, size_str
 
     def clearCache(self):
         for f in listdir(self.__cache_dir):
