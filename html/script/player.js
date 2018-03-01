@@ -75,8 +75,9 @@ var Player = function() {
         $('song-name').title = name
         var info = ''
         for (var i in artists) {
-            info += artists[i]
+            info += artists[i] + '/'
         }
+        info = info.substring(0, info.length - 1)
         info += ' - ' + album
         $('song-info').innerText = info
         $('song-info').title = info
