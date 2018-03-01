@@ -1,6 +1,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from os import path
 from urllib.parse import urlparse
+import webbrowser
 
 html_path = ''
 song_file = ''
@@ -67,10 +68,12 @@ def getLocalIP(ifname='eth0'):
         s.close()
     return ip
 
-def initServer(port):
+def initServer(port, open_url=False):
     addr = getLocalIP() + ':' + str(port)
     print('starting server at', addr)
     # Server settings
     httpd = HTTPServer(('', port), RequestHandler)
     print('running server...')
+    if open_url:
+        webbrowser.open('http://' + addr)
     httpd.serve_forever()
